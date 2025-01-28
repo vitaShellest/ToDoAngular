@@ -5,42 +5,53 @@
       "title": "Einkaufen",
       "date": "2025-01-27",
       "description": "Milch, Brot, Käse",
-      "completed": false
+      "status": "Backlog",
+      "priority": "Regular",
+      "assigned": "Frank"
     },
     {
       "id": 2,
       "title": "Angular lernen",
       "date": "2025-01-28",
       "description": "Routing und Lazy-Loading üben",
-      "completed": false
+      "status": "In Progress",
+      "priority": "Regular",
+      "assigned": "Frank"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Sport machen",
       "date": "2025-01-26",
       "description": "30 Minuten Joggen",
-      "completed": true
+      "status": "Backlog",
+      "priority": "Low",
+      "assigned": "Peter"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Projekt planen",
       "date": "2025-02-01",
       "description": "Aufgaben definieren und Zeitleiste erstellen",
-      "completed": false
+      "status": "Done",
+      "priority": "High",
+      "assigned": "Hans"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Buch lesen",
-      "date": "2025-01-30",
-      "description": "50 Seiten im aktuellen Buch lesen",
-      "completed": false
+      "date": "2025-02-01",
+      "status": "Done",
+      "priority": "Low",
+      "assigned": "Hans"
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Wohnung putzen",
       "date": "2025-01-25",
       "description": "Küche und Wohnzimmer reinigen",
-      "completed": true
+      "status": "Done",
+      "priority": "High",
+      "assigned": "Frank"
     }
   ]
 }

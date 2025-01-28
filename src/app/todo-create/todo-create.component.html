@@ -1,1 +1,61 @@
-<p>todo-create works!</p>
+<div class="todo-create-container">
+  <h2>Create Todo</h2>
+
+  <!-- Titel -->
+  <label for="title">Title</label>
+  <input id="title" type="text" placeholder="Title" [(ngModel)]="todo.title" />
+
+  <!-- Beschreibung -->
+  <label for="description">Description</label>
+  <textarea
+    id="description"
+    placeholder="Description"
+    [(ngModel)]="todo.description"
+  ></textarea>
+
+  <!-- Fälligkeitsdatum -->
+  <label for="dueDate">Due Date</label>
+  <input
+    id="dueDate"
+    type="date"
+    placeholder="Due Date"
+    [(ngModel)]="todo.date"
+  />
+
+  <!-- Dropdowns für Priority, Assigned & Status -->
+  <div class="dropdowns">
+    <div>
+      <label for="priority">Priority</label>
+      <select id="priority" [(ngModel)]="todo.priority">
+        @for(opt of priorities; track opt){
+        <option [value]="opt">{{ opt }}</option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label for="assigned">Assigned</label>
+      <select id="assigned" [(ngModel)]="todo.assigned">
+          @for(opt of assignees; track opt){
+        <option [value]="opt">{{ opt }}</option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label for="status">Status</label>
+      <select id="status" [(ngModel)]="todo.status">
+          @for(opt of statuses; track opt){
+        <option [value]="opt">{{ opt }}</option>
+        }
+
+      </select>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="button-container">
+    <button class="cancel" (click)="cancel()">Cancel</button>
+    <button class="ok" (click)="saveTodo()">Save</button>
+  </div>
+</div>

@@ -1,1 +1,33 @@
-<p>todo-list works!</p>
+<div class="todo-container">
+  <table class="todo-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todoService.getTodos(); trackBy: trackById">
+        <td>{{ todo.title }}</td>
+        <td>{{ todo.priority }}</td>
+        <td>{{ todo.status }}</td>
+        <td>{{ todo.date | date : "mediumDate" }}</td>
+        <td>
+          <button
+            (click)="todoService.deleteTodo(todo.id)"
+            class="delete-button"
+            title="Delete Todo"
+          >
+            <img src="images/delete.svg" alt="Delete Todo" />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="navigateToCreate()" class="add-button" title="Create Todo">
+    <img src="images/add.svg" alt="Add Todo" />
+  </button>
+</div>

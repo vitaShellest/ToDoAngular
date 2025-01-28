@@ -1,0 +1,71 @@
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.todo-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+}
+
+.todo-table thead tr {
+  background-color: #f2f2f2;
+  color: #194479;
+  text-align: left;
+  font-weight: bold;
+}
+
+.todo-table th,
+.todo-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.todo-table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.todo-table tbody tr:nth-of-type(even) {
+  background-color: #f9f9f9;
+}
+
+.todo-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+.add-button {
+  position: absolute;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.add-button img {
+  width: 60px;
+  height: 60px;
+}
+
+.delete-button img {
+  width: 30px;
+  height: 30px;
+}
+
+.add-button:hover,
+.delete-button:hover {
+  background-color: #01adc1;
+}
+
+.add-button:active,
+.delete-button:active {
+  background-color: #017a8c;
+}
