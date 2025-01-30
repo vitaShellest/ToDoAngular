@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { TodoInterface } from './todo-list/todo-interface';
 import { Observable, tap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from './utils/delete-dialog/delete-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Sort, MatSortModule } from '@angular/material/sort';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,11 @@ export class TodoService {
   // Auswahloptionen für Dropdowns
   readonly priorities = ['Low', 'Regular', 'High'];
   readonly statuses = ['Backlog', 'In Progress', 'Done'];
-  router: any;
+
+  _filter = signal<Partial<TodoInterface>>({});
+
+  showDoubleArrow = true;
+  sortActive = false;
 
   fetchTodos(): void {
     this.http.get<TodoInterface[]>(this.apiUrl).subscribe((data) => {
@@ -29,6 +34,25 @@ export class TodoService {
 
   getTodos(): TodoInterface[] {
     return this.todos();
+  }
+  readonly todosFiltered = computed(() => {
+    let filt = this._filter();
+
+    function isMatch(text: string, filter?: string) {
+      if (!filter || filter.length === 0) return true;
+      return filter === text;
+    }
+    return this?.todos().filter((x) => {
+      return (
+        isMatch(x.status, filt.status) && isMatch(x.priority, filt.priority)
+      );
+    });
+  });
+
+  updateFilter(newFilter?: Partial<TodoInterface>) {
+    this._filter.update(
+      (x) => ({ ...x, ...newFilter } as Partial<TodoInterface>)
+    );
   }
 
   getTodoByIdFromSer(id: string) {
@@ -43,15 +67,6 @@ export class TodoService {
     );
   }
 
-  // updateTodo(updatedTodo: TodoInterface): void {
-  //   this.http
-  //     .put<TodoInterface>(`${this.apiUrl}/${updatedTodo.id}`, updatedTodo)
-  //     .subscribe((todo) => {
-  //       this.todos.update((oldTodos) =>
-  //         oldTodos.map((t) => (t.id === todo.id ? todo : t))
-  //       );
-  //     });
-  // }
   updateTodo(updatedTodo: TodoInterface): Observable<TodoInterface> {
     return this.http.put<TodoInterface>(
       `${this.apiUrl}/${updatedTodo.id}`,
@@ -61,6 +76,7 @@ export class TodoService {
 
   readonly dialog = inject(MatDialog);
   readonly snackBar = inject(MatSnackBar);
+
   deleteTodo(id: string | number) {
     const todo = this.todos().find((x) => x.id == id);
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
@@ -87,4 +103,33 @@ export class TodoService {
       }
     });
   }
+
+  sortData(sort: Sort) {
+    const data = this.todos().slice();
+    if (!sort.active || sort.direction === '') {
+      this.todos.set(data);
+      this.showDoubleArrow = true;
+      this.sortActive = false;
+      return;
+    }
+    this.showDoubleArrow = false;
+    this.sortActive = true;
+    this.todos.set(
+      data.sort((a, b) => {
+        const isAsc = sort.direction === 'asc';
+        switch (sort.active) {
+          case 'date':
+            return compare(a.date, b.date, isAsc);
+          default:
+            return 0;
+        }
+      })
+    );
+  }
+}
+function compare(a: Date | undefined, b: Date | undefined, isAsc: boolean) {
+  if (a === undefined || b === undefined) {
+    return 0;
+  }
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

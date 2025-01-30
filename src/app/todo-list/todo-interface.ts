@@ -3,7 +3,10 @@ export interface TodoInterface {
   title: string;
   date?: Date;
   description: string;
-  status: 'Backlog' | 'In Progress' | 'Done';
-  priority: 'Low' | 'Regular' | 'High';
+  status: status;
+  priority: priority;
   assigned: string;
 }
+
+type status = 'Backlog' | 'In Progress' | 'Done';
+type priority = 'Low' | 'Regular' | 'High';

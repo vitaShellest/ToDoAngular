@@ -1,18 +1,54 @@
+<div class="filters">
+  <label for="filterPriority">Priority:</label>
+  <select
+    id="filterPriority"
+    [(ngModel)]="todoService._filter().priority"
+    (change)="todoService.updateFilter()"
+  >
+    <option value="">All</option>
+    <option *ngFor="let priority of todoService.priorities" [value]="priority">
+      {{ priority }}
+    </option>
+  </select>
+
+  <label for="filterStatus">Status:</label>
+  <select
+    id="filterStatus"
+    [(ngModel)]="todoService._filter().status"
+    (change)="todoService.updateFilter()"
+  >
+    <option value="">All</option>
+    <option *ngFor="let status of todoService.statuses" [value]="status">
+      {{ status }}
+    </option>
+  </select>
+</div>
 <div class="todo-container">
-  <table class="todo-table">
+  <table class="todo-table" matSort (matSortChange)="sortData($event)">
     <thead>
       <tr>
         <th>Title</th>
         <th>Priority</th>
         <th>Status</th>
-        <th>Date</th>
+        <th
+          mat-sort-header="date"
+          style="cursor: pointer"
+          title="Sort date"
+          (mouseover)="todoService.showDoubleArrow = false"
+          (mouseleave)="
+            todoService.showDoubleArrow = todoService.sortActive ? false : true
+          "
+        >
+          Date
+          <span *ngIf="todoService.showDoubleArrow">⇅</span>
+        </th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr
         title="Edit Todo"
-        *ngFor="let todo of todoService.getTodos(); trackBy: trackById"
+        *ngFor="let todo of todoService.todosFiltered(); trackBy: trackById"
       >
         <td>{{ todo.title }}</td>
         <td>{{ todo.priority }}</td>
@@ -20,31 +56,45 @@
         <td>{{ todo.date | date : "mediumDate" }}</td>
         <td class="buttons">
           <button
-            (click)="navigateToDetails(todo.id.toString())"
+            mat-icon-button
+            (click)="
+              navigateToDetails(todo.id.toString()); $event.stopPropagation()
+            "
+            matTooltip="Show details"
+            aria-label="Show details"
             class="delete-button"
-            title="Show details"
           >
-            <img src="images/details.svg" alt="Datails Todo" />
+            <img src="images/details.svg" alt="" title="" />
           </button>
           <button
+            mat-icon-button
             (click)="navigateToEdit(todo.id.toString())"
+            matTooltip="Edit Todo"
+            aria-label="Edit Todo"
             class="delete-button"
-            title="Edit Todo"
           >
-            <img src="images/edit.svg" alt="Edit Todo" />
+            <img src="images/edit.svg" alt="" title="" />
           </button>
           <button
-            (click)="todoService.deleteTodo(todo.id)"
+            mat-icon-button
+            (click)="todoService.deleteTodo(todo.id); $event.stopPropagation()"
+            matTooltip="Delete Todo"
+            aria-label="Delete Todo"
             class="delete-button"
-            title="Delete Todo"
           >
-            <img src="images/delete.svg" alt="Delete Todo" />
+            <img src="images/delete.svg" alt="" title="" />
           </button>
         </td>
       </tr>
     </tbody>
   </table>
-  <button (click)="navigateToCreate()" class="add-button" title="Create Todo">
-    <img src="images/add.svg" alt="Add Todo" />
+  <button
+    mat-icon-button
+    (click)="navigateToCreate()"
+    class="add-button"
+    matTooltip="Create Todo"
+    aria-label="Create Todo"
+  >
+    <img src="images/add.svg" alt="" title="" />
   </button>
 </div>

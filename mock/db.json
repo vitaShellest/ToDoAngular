@@ -1,15 +1,6 @@
 {
   "todos": [
     {
-      "id": "1",
-      "title": "Task 1",
-      "date": "2025-12-21",
-      "description": "Beschreibung für Task 1",
-      "status": "Backlog",
-      "priority": "Regular",
-      "assigned": "Hans"
-    },
-    {
       "id": "2",
       "title": "Task 2",
       "date": "2025-07-06",

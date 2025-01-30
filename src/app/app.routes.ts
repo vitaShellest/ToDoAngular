@@ -29,4 +29,17 @@ export const routes: Routes = [
         (m) => m.TodoDetailsComponent
       ),
   },
+  {
+    path: 'user-management',
+    loadComponent: () =>
+      import('./user-management/user-management.component').then(
+        (m) => m.UserManagementComponent
+      ),
+  },
+
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./login/login.component').then((m) => m.LoginComponent),
+  },
 ];

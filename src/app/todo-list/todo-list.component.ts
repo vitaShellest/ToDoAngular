@@ -1,12 +1,23 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgIf } from '@angular/common';
 import { TodoService } from '../todo.service';
 import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { Sort, MatSort, MatSortModule } from '@angular/material/sort';
 
 @Component({
   selector: 'pl-todo-list',
-  imports: [NgFor, DatePipe],
+  imports: [
+    NgFor,
+    NgIf,
+    DatePipe,
+    MatTooltipModule,
+    FormsModule,
+    MatSort,
+    MatSortModule,
+  ],
   host: { ngSkipHydration: 'true' },
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.scss',
@@ -31,5 +42,9 @@ export class TodoListComponent implements OnInit {
   navigateToDetails(todoID: string) {
     console.log('toDetail', todoID);
     this.router.navigate(['/todo-details', todoID]);
+  }
+
+  sortData(sort: Sort) {
+    this.todoService.sortData(sort);
   }
 }

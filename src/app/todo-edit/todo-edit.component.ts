@@ -20,6 +20,7 @@ export class TodoEditComponent implements OnInit {
     id: '',
     title: '',
     description: '',
+    date: new Date(),
     priority: 'Low',
     assigned: '',
     status: 'Backlog',
