@@ -16,14 +16,14 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'todo-edit',
+    path: 'todo-edit/:id',
     loadComponent: () =>
       import('./todo-edit/todo-edit.component').then(
         (m) => m.TodoEditComponent
       ),
   },
   {
-    path: 'todo-details',
+    path: 'todo-details/:id',
     loadComponent: () =>
       import('./todo-details/todo-details.component').then(
         (m) => m.TodoDetailsComponent

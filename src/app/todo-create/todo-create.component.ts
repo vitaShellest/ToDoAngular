@@ -20,6 +20,7 @@ export class TodoCreateComponent {
     id: '',
     title: '',
     description: '',
+    date: new Date(),
     priority: 'Low',
     assigned: '',
     status: 'Backlog',
@@ -27,10 +28,6 @@ export class TodoCreateComponent {
 
   get priorities() {
     return this.todoService.priorities;
-  }
-
-  get assignees() {
-    return this.todoService.assignees;
   }
 
   get statuses() {

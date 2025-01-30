@@ -1,57 +1,94 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "Einkaufen",
-      "date": "2025-01-27",
-      "description": "Milch, Brot, Käse",
+      "id": "1",
+      "title": "Task 1",
+      "date": "2025-12-21",
+      "description": "Beschreibung für Task 1",
       "status": "Backlog",
       "priority": "Regular",
-      "assigned": "Frank"
+      "assigned": "Hans"
     },
     {
-      "id": 2,
-      "title": "Angular lernen",
-      "date": "2025-01-28",
-      "description": "Routing und Lazy-Loading üben",
-      "status": "In Progress",
+      "id": "2",
+      "title": "Task 2",
+      "date": "2025-07-06",
+      "description": "Beschreibung für Task 2",
+      "status": "Backlog",
       "priority": "Regular",
       "assigned": "Frank"
     },
     {
       "id": "3",
-      "title": "Sport machen",
-      "date": "2025-01-26",
-      "description": "30 Minuten Joggen",
-      "status": "Backlog",
-      "priority": "Low",
+      "title": "Task 3",
+      "date": "2025-10-26",
+      "description": "Beschreibung für Task 3",
+      "status": "Done",
+      "priority": "Regular",
       "assigned": "Peter"
     },
     {
       "id": "4",
-      "title": "Projekt planen",
-      "date": "2025-02-01",
-      "description": "Aufgaben definieren und Zeitleiste erstellen",
-      "status": "Done",
-      "priority": "High",
+      "title": "Task 4",
+      "date": "2025-01-27",
+      "description": "Beschreibung für Task 4",
+      "status": "In Progress",
+      "priority": "Regular",
       "assigned": "Hans"
     },
     {
       "id": "5",
-      "title": "Buch lesen",
-      "date": "2025-02-01",
+      "title": "Task 5",
+      "date": "2025-01-01",
+      "description": "Beschreibung für Task 5",
+      "status": "Backlog",
+      "priority": "Regular",
+      "assigned": "Peter"
+    },
+    {
+      "id": "6",
+      "title": "Task 6",
+      "date": "2025-04-16",
+      "description": "Beschreibung für Task 6",
       "status": "Done",
       "priority": "Low",
       "assigned": "Hans"
     },
     {
-      "id": "6",
-      "title": "Wohnung putzen",
-      "date": "2025-01-25",
-      "description": "Küche und Wohnzimmer reinigen",
+      "id": "7",
+      "title": "Task 7",
+      "date": "2025-12-01",
+      "description": "Beschreibung für Task 7",
+      "status": "Backlog",
+      "priority": "Regular",
+      "assigned": "Peter"
+    },
+    {
+      "id": "8",
+      "title": "Task 8",
+      "date": "2025-09-14",
+      "description": "Beschreibung für Task 8",
+      "status": "In Progress",
+      "priority": "Regular",
+      "assigned": "Vita"
+    },
+    {
+      "id": "9",
+      "title": "Task 9",
+      "date": "2025-08-07",
+      "description": "Beschreibung für Task 9",
       "status": "Done",
+      "priority": "Regular",
+      "assigned": "Hans"
+    },
+    {
+      "id": "10",
+      "title": "Task 10",
+      "date": "2025-10-05",
+      "description": "Beschreibung für Task 10",
+      "status": "Backlog",
       "priority": "High",
-      "assigned": "Frank"
+      "assigned": "Vita"
     }
   ]
 }

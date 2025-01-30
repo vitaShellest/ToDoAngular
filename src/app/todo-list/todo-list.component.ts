@@ -25,4 +25,11 @@ export class TodoListComponent implements OnInit {
   navigateToCreate() {
     this.router.navigate(['/todo-create']);
   }
+  navigateToEdit(todoId: string) {
+    this.router.navigate(['/todo-edit', todoId]);
+  }
+  navigateToDetails(todoID: string) {
+    console.log('toDetail', todoID);
+    this.router.navigate(['/todo-details', todoID]);
+  }
 }

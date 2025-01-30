@@ -1,1 +1,30 @@
-<p>todo-details works!</p>
+<div class="todo-details-container">
+  <h2>Todo Details</h2>
+  <div class="todo-details">
+    <div class="detail-item">
+      <label>Title:</label>
+      <span>{{ todo.title }}</span>
+    </div>
+    <div class="detail-item">
+      <label>Description:</label>
+      <span>{{ todo.description }}</span>
+    </div>
+    <div class="detail-item">
+      <label>Priority:</label>
+      <span>{{ todo.priority }}</span>
+    </div>
+    <div class="detail-item">
+      <label>Status:</label>
+      <span>{{ todo.status }}</span>
+    </div>
+    <div class="detail-item">
+      <label>Assigned:</label>
+      <span>{{ todo.assigned }}</span>
+    </div>
+    <div class="detail-item">
+      <label>Date:</label>
+      <span>{{ todo.date | date : "mediumDate" }}</span>
+    </div>
+  </div>
+  <button class="back-button" (click)="goBack()">Back</button>
+</div>

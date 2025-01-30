@@ -60,12 +60,21 @@
   height: 30px;
 }
 
+.delete-button {
+  margin-right: 10px;
+}
+.buttons {
+  max-width: 80px;
+}
+
 .add-button:hover,
 .delete-button:hover {
   background-color: #01adc1;
+  cursor: pointer;
 }
 
 .add-button:active,
 .delete-button:active {
   background-color: #017a8c;
+  cursor: pointer;
 }

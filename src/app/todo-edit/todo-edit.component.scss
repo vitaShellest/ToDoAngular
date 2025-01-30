@@ -1,0 +1,70 @@
+.todo-edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+h2 {
+  color: #194479;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+textarea {
+  height: 80px;
+}
+
+.dropdowns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdowns select {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.comments-section textarea {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.cancel {
+  background-color: #ccc;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.ok {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.ok:hover {
+  background-color: #0056b3;
+}

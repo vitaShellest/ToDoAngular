@@ -10,12 +10,29 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let todo of todoService.getTodos(); trackBy: trackById">
+      <tr
+        title="Edit Todo"
+        *ngFor="let todo of todoService.getTodos(); trackBy: trackById"
+      >
         <td>{{ todo.title }}</td>
         <td>{{ todo.priority }}</td>
         <td>{{ todo.status }}</td>
         <td>{{ todo.date | date : "mediumDate" }}</td>
-        <td>
+        <td class="buttons">
+          <button
+            (click)="navigateToDetails(todo.id.toString())"
+            class="delete-button"
+            title="Show details"
+          >
+            <img src="images/details.svg" alt="Datails Todo" />
+          </button>
+          <button
+            (click)="navigateToEdit(todo.id.toString())"
+            class="delete-button"
+            title="Edit Todo"
+          >
+            <img src="images/edit.svg" alt="Edit Todo" />
+          </button>
           <button
             (click)="todoService.deleteTodo(todo.id)"
             class="delete-button"

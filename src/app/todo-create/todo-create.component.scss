@@ -8,6 +8,12 @@
   font-family: "Roboto", sans-serif;
   font-size: 16px;
 }
+h2 {
+  color: #194479;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 input,
 textarea,
@@ -51,7 +57,7 @@ textarea {
 }
 
 .ok {
-  background-color: #007bff;
+  background-color: #194479;
   color: white;
   border: none;
   padding: 10px;
