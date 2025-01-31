@@ -47,4 +47,8 @@ export class LoginService {
       this.users.set(this.users().filter((user) => user.id !== id));
     });
   }
+
+  getUserById(userid: string) {
+    return this.http.get<UserInterface>(`${this.apiUrl}/${userid}`).pipe();
+  }
 }

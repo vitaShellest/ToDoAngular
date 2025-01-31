@@ -1,4 +1,4 @@
-import { Component, Inject, NgModule } from '@angular/core';
+import { Component, inject, Inject, NgModule, OnInit } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogRef,
@@ -12,6 +12,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { UserInterface } from '../user-management/user-interface';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'pl-user-edit-dialog',
@@ -19,22 +20,29 @@ import { UserInterface } from '../user-management/user-interface';
   templateUrl: './user-edit-dialog.component.html',
   styleUrl: './user-edit-dialog.component.scss',
 })
-export class UserEditDialogComponent {
-  userForm: FormGroup;
+export class UserEditDialogComponent implements OnInit {
+  userForm!: FormGroup;
+  data = inject<UserInterface>(MAT_DIALOG_DATA);
 
-  constructor(
-    public dialogRef: MatDialogRef<UserEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: UserInterface
-  ) {
+  readonly dialogRef = inject(MatDialogRef<UserEditDialogComponent>);
+  readonly loginService = inject(LoginService);
+
+  ngOnInit(): void {
     this.userForm = new FormGroup({
-      name: new FormControl(data.name, [Validators.required]),
-      email: new FormControl(data.email, [
-        Validators.required,
-        Validators.email,
-      ]),
-      role: new FormControl(data.role, [Validators.required]),
-      active: new FormControl(data.active),
+      name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      role: new FormControl('User', [Validators.required]),
+      active: new FormControl(true),
     });
+
+    const userId = this.data.id;
+    if (userId) {
+      this.loginService.getUserById(userId).subscribe((user) => {
+        if (user) {
+          this.userForm.patchValue(user);
+        }
+      });
+    }
   }
 
   onSave(): void {

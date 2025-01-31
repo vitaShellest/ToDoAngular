@@ -66,7 +66,7 @@ export class UserManagementComponent implements OnInit {
   navigateToEdit(user: UserInterface) {
     const dialogRef = this.dialog.open(UserEditDialogComponent, {
       width: '400px',
-      data: { user },
+      data: { id: user.id },
     });
 
     dialogRef.afterClosed().subscribe((result: UserInterface) => {
