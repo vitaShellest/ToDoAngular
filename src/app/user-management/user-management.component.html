@@ -1,1 +1,67 @@
-<p>user-management works!</p>
+<div class="container">
+  <h2>User Management</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Active</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of loginService.getUsers()">
+        <!-- <tr> -->
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>{{ user.active ? "Yes" : "No" }}</td>
+        <button
+          mat-icon-button
+          (click)="navigateToEdit(user)"
+          matTooltip="Edit Todo"
+          aria-label="Edit Todo"
+          class="delete-button"
+        >
+          <img src="images/edit.svg" alt="" title="" />
+        </button>
+        <button
+          mat-icon-button
+          (click)="loginService.deletedUser(user.id); $event.stopPropagation()"
+          matTooltip="Delete Todo"
+          aria-label="Delete Todo"
+          class="delete-button"
+        >
+          <img src="images/delete.svg" alt="" title="" />
+        </button>
+      </tr>
+    </tbody>
+  </table>
+
+  <form [formGroup]="userForm" (ngSubmit)="addUser()">
+    <label>Name:</label>
+    <input formControlName="name" required />
+
+    <label>Password:</label>
+    <input type="password" formControlName="password" required />
+
+    <label>Email:</label>
+    <input type="email" formControlName="email" required />
+
+    <label>Role:</label>
+    <select formControlName="role">
+      <option value="Admin">Admin</option>
+      <option value="User">User</option>
+    </select>
+
+    <div class="active-checkbox">
+      <label for="active">Active:</label>
+      <input id="active" type="checkbox" formControlName="active" />
+    </div>
+
+    <button class="save-btn" type="submit" [disabled]="!userForm.valid">
+      Save
+    </button>
+  </form>
+</div>

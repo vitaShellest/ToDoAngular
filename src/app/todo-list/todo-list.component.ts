@@ -30,9 +30,10 @@ export class TodoListComponent implements OnInit {
     this.todoService.fetchTodos();
   }
 
-  trackById(index: number, todo: any): string | number {
+  trackById(todo: any): string | number {
     return todo.id;
   }
+
   navigateToCreate() {
     this.router.navigate(['/todo-create']);
   }

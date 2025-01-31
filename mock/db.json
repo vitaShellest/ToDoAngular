@@ -81,5 +81,55 @@
       "priority": "High",
       "assigned": "Vita"
     }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Alice Admin",
+      "password": "admin123",
+      "email": "alice.admin@example.com",
+      "role": "Admin",
+      "active": true
+    },
+    {
+      "id": "2",
+      "name": "Bob User",
+      "password": "user123",
+      "email": "bob.user@example.com",
+      "role": "User",
+      "active": true
+    },
+    {
+      "id": "3",
+      "name": "Charlie Admin",
+      "password": "charliePass",
+      "email": "charlie.admin@example.com",
+      "role": "Admin",
+      "active": false
+    },
+    {
+      "id": "4",
+      "name": "David User",
+      "password": "davidPass",
+      "email": "david.user@example.com",
+      "role": "User",
+      "active": true
+    },
+    {
+      "id": "5",
+      "name": "Emma Admin",
+      "password": "emmaSecure",
+      "email": "emma.admin@example.com",
+      "role": "Admin",
+      "active": true
+    },
+    {
+      "id": "jsumcxgpk",
+      "name": "Vivi",
+      "password": "Vivi",
+      "email": "vivi@mail.com",
+      "role": "User",
+      "active": true
+    }
   ]
 }
